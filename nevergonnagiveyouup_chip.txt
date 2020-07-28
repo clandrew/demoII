@@ -1,0 +1,153 @@
+168	We're
+148	no
+138	strang
+138	ers
+124	to
+148	loo
+168	o
+188	ve
+
+168	You
+168	know
+148	the
+138	ru
+168	les
+
+188	and
+94	so
+94	do
+124	I
+
+168	A
+168	full
+148	com
+138	mit
+168	ment's
+138	what
+124	I'm
+
+148	Drea
+168	ming
+188	of
+
+168	You
+168	know
+148	the
+138	game
+168	and
+188	we're
+
+124	Gon
+124	na
+112	play
+124	it
+
+138	And
+124	i
+112	if
+138	you
+124	ask
+124	me
+124	how
+112	I'm
+124	fee
+118	ling
+
+168	Got
+148	ta
+138	make
+168	you
+
+124	un
+112	der
+124	stand
+
+188	Ne
+168	ver
+138	gon
+168	na
+112	give
+112	you
+124	up
+
+188	Ne
+168	ver
+138	gon
+168	na
+124	let
+124	you
+138	down
+
+188	Ne
+168	ver
+138	gon
+168	na
+138	run
+124	a
+148	round
+168	a
+188	nd
+188	de
+124	sert
+138	you
+
+188	Ne
+168	ver
+138	gon
+168	na
+112	make
+112	you
+124	cry
+
+188	Ne
+168	ver
+138	gon
+168	na
+94	say
+148	good
+138	bye
+148	e
+168	e
+
+188	Ne
+168	ver
+138	gon
+168	na
+138	tell
+124	a
+148	lie
+168	e
+188	e
+
+188	and
+124	hurt
+112	you
+
+188	Ne
+168	ver
+138	gon
+168	na
+138	tell
+124	a
+148	lie
+168	e
+188	e
+
+188	instrumental
+124
+138
+112
+68
+
+
+
+Subroutines:
+WERENO 		Emits 3 notes. "We're no strang-" 168, 148, 138
+AFULLC		Emits 5 notes. "A full committment's-" 168, 168, 148, 138, 168
+
+
+
+168	Got
+148	ta
+138	make
+168	you
