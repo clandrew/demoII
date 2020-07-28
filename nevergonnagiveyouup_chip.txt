@@ -144,10 +144,3 @@
 Subroutines:
 WERENO 		Emits 3 notes. "We're no strang-" 168, 148, 138
 AFULLC		Emits 5 notes. "A full committment's-" 168, 168, 148, 138, 168
-
-
-
-168	Got
-148	ta
-138	make
-168	you
