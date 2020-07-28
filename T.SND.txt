@@ -20,7 +20,10 @@ START    LDA   #$C0
          LDA   #168       ; O
          JSR   EMITTONA
          LDA   #188       ; VE
-         JSR   EMITTONA
+         JSR   ETONETWO
+         JSR   EMITTONE
+         JSR   EMITTONE
+         JSR   EMITTONE
 *
          LDA   #$FF
          JSR   WAIT
@@ -34,6 +37,7 @@ START    LDA   #$C0
          JSR   EMITTONA
          LDA   #168       ;LES
          JSR   EMITTONA
+         JSR   EMITTONE  
 *
          LDA   #$FF
          JSR   WAIT
@@ -41,11 +45,11 @@ START    LDA   #$C0
          LDA   #188       ; AND
          JSR   EMITTONA
          LDA   #94        ; SO
-         JSR   EMITTONA
-         JSR   EMITTONE
-         JSR   EMITTONE   ; DO
+         JSR   ETONETWO   ; DO
          LDA   #124       ; I
-         JSR   EMITTONA
+         JSR   ETONETWO
+         JSR   EMITTONE 
+         JSR   EMITTONE 
 *
          LDA   #$FF
          JSR   WAIT
@@ -64,25 +68,68 @@ START    LDA   #$C0
          LDA   #168       ; MING
          JSR   EMITTONA
          LDA   #188       ; OF
+         JSR   ETONETWO
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         JSR   AFULLC     ; YOU WOUDNT GET THIS 
+         LDA #188         ; FROM
+         JSR   EMITTONA
+         JSR   EMITTONE 
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         LDA   #124       ; A
+         JSR   ETONETWO   ; NY O
+         LDA   #112       ; THER
+         JSR   EMITTONA
+         LDA   #124       ; GUY
+         JSR   ETONETWO 
+         JSR   EMITTONE
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         LDA   #138       ; AND
+         JSR   ETONETWO
+         JSR   EMITTONE
+         JSR   EMITTONE
+         LDA   #124       ; I
+         JSR   EMITTONA
+         LDA   #112       ; IF
+         JSR   EMITTONA
+         LDA   #138       ; YOU
+         JSR   EMITTONA
+         LDA   #124       ; ASK ME HOW
+         JSR   ETONETWO
+         LDA   #112       ; I'M
+         JSR   EMITTONA
+         LDA   #124       ; FEE
+         JSR   EMITTONA
+         JSR   EMITTONE
+         LDA   #188       ; LING
+         JSR   EMITTONA
+         JSR   EMITTONE
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         JSR   WERENO     ; GOTTA MAKE
+         LDA   #168       ; YOU
+         JSR   EMITTONA
+         JSR   EMITTONE
+         LDA   #124       ; UN
+         JSR   EMITTONA
+         LDA   #112       ; DER
+         JSR   EMITTONA
+         LDA   #124       ; STAND
          JSR   EMITTONA
 *
          LDA   #$FF
          JSR   WAIT
 *
-         JSR   AFULLC     ; YOU KNOW THE GAME AND
-         LDA #188
-         JSR   EMITTONA
-*
-         LDA   #$FF
-         JSR   WAIT
-*
-         LDA   #124       ; GON
-         JSR   EMITTONA
-         JSR   EMITTONE   ; NA
-         LDA   #112       ; PLAY
-         JSR   EMITTONA
-         LDA   #124       ; IT
-         JSR   EMITTONA
 *
          RTS
 * DONE MAINLINE
@@ -102,6 +149,11 @@ WERENO   LDA   #168       ; WE'RE
          JSR   EMITTONA
          LDA   #138       STRANG
          JSR   EMITTONA
+         RTS
+*
+ETONETWO JSR   EMITTONA
+         JSR   EMITTONE
+         JSR   EMITTONE
          RTS
 *
 * EMITTONA INPUTS A
