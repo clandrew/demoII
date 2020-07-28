@@ -13,107 +13,101 @@ START    LDA   #$C0
          JSR   WERENO     ; WE'RE NO STRAN
          JSR   EMITTONE   ;ERS
          LDA   #124       ; TO
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #148       ; LOO
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          JSR   EMITTONE
          LDA   #168       ; O
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #188       ; VE
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
 *
          LDA   #$FF
          JSR   WAIT
 *
          LDA   #168       ; YOU
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          JSR   EMITTONE   ; KNOW
          LDA   #148       ; THE
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #138       ; RU
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #168       ;LES
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
 *
          LDA   #$FF
          JSR   WAIT
 *
          LDA   #188       ; AND
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #94        ; SO
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          JSR   EMITTONE
          JSR   EMITTONE   ; DO
          LDA   #124       ; I
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
 *
          LDA   #$FF
          JSR   WAIT
 *
-         JSR   AFULLC     ;FULL COMMITTMENT'S
+         JSR   AFULLC     ; A FULL COMMITTMENT'S
          LDA   #138       ; WHAT
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #124       ; I'M
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         LDA   #148       ; DREA
+         JSR   EMITTONA
+         LDA   #168       ; MING
+         JSR   EMITTONA
+         LDA   #188       ; OF
+         JSR   EMITTONA
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         JSR   AFULLC     ; YOU KNOW THE GAME AND
+         LDA #188
+         JSR   EMITTONA
+*
+         LDA   #$FF
+         JSR   WAIT
+*
+         LDA   #124       ; GON
+         JSR   EMITTONA
+         JSR   EMITTONE   ; NA
+         LDA   #112       ; PLAY
+         JSR   EMITTONA
+         LDA   #124       ; IT
+         JSR   EMITTONA
 *
          RTS
+* DONE MAINLINE
 *
 * AFULLC
 AFULLC   LDA   #168       ; A
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          JSR   WERENO     ; FULL COMMIT
          LDA   #168       ; MENT'S
-         STA   $06
-         JSR   EMITTONE
-         LDA   #138       ; WHAT
-         STA   $06
-         JSR   EMITTONE
-         LDA   #124       ; I'M
-         STA   $06
-         JSR   EMITTONE
-         LDA   #148       ; DREA
-         STA   $06
-         JSR   EMITTONE
-         LDA   #168       ; MING
-         STA   $06
-         JSR   EMITTONE
-         LDA   #188       ; OF
-         STA   $06
-         JSR   EMITTONE
-*
-         LDA   #$FF
-         JSR   WAIT
-*
+         JSR   EMITTONA
          RTS
 *
-         RTS
 * WERENO
 WERENO   LDA   #168       ; WE'RE
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #148       ; NO
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          LDA   #138       STRANG
-         STA   $06
-         JSR   EMITTONE
+         JSR   EMITTONA
          RTS
 *
-* EMITTONE SCRAMBLES A X Y
+* EMITTONA INPUTS A
+* EMITTONE HAS NO INPUTS
+* SCRAMBLES A X Y
+EMITTONA STA   $06
 EMITTONE LDX   $07        ; DURATION IN 07
 DUR      LDY   $06        ; PITCH IN 06
          LDA   CHIRP
