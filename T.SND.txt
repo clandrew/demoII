@@ -10,170 +10,223 @@ WAIT     EQU   $FCA8
 START    LDA   #$C0
          STA   $07
 *
-         JSR   WERENO     ; WE'RE NO STRAN
-         JSR   EMITTONE   ;ERS
+         JSR   WERENO     ; WE'RE NO STRANG
+         JSR   T8E        ; ERS
          LDA   #124       ; TO
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #148       ; LOO
-         JSR   EMITTONA
-         JSR   EMITTONE
+         JSR   T4A
          LDA   #168       ; O
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #188       ; VE
-         JSR   ETONETWO
-         JSR   EMITTONE
-         JSR   EMITTONE
-         JSR   EMITTONE
+         JSR   T2A
+         JSR   T4E
 *
          LDA   #$FF
          JSR   WAIT
 *
          LDA   #168       ; YOU
-         JSR   EMITTONA
-         JSR   EMITTONE   ; KNOW
+         JSR   T4A        ; KNOW
          LDA   #148       ; THE
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #138       ; RU
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #168       ;LES
-         JSR   EMITTONA
-         JSR   EMITTONE  
+         JSR   T4A 
 *
          LDA   #$FF
          JSR   WAIT
 *
          LDA   #188       ; AND
-         JSR   EMITTONA
-         LDA   #94        ; SO
-         JSR   ETONETWO   ; DO
+         JSR   T8A
+         LDA   #94        ; SO DO
+         JSR   T4A        ; 
+         JSR   T8E        ; 
          LDA   #124       ; I
-         JSR   ETONETWO
-         JSR   EMITTONE 
-         JSR   EMITTONE 
+         JSR   T2A 
+         JSR   T8E  
 *
          LDA   #$FF
          JSR   WAIT
 *
          JSR   AFULLC     ; A FULL COMMITTMENT'S
          LDA   #138       ; WHAT
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #124       ; I'M
-         JSR   EMITTONA
+         JSR   T8A
 *
          LDA   #$FF
          JSR   WAIT
 *
          LDA   #148       ; DREA
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #168       ; MING
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #188       ; OF
-         JSR   ETONETWO
+         JSR   T4A
+         JSR   T8E
 *
          LDA   #$FF
          JSR   WAIT
 *
          JSR   AFULLC     ; YOU WOUDNT GET THIS 
          LDA #188         ; FROM
-         JSR   EMITTONA
-         JSR   EMITTONE 
+         JSR   T4A
 *
          LDA   #$FF
          JSR   WAIT
 *
-         LDA   #124       ; A
-         JSR   ETONETWO   ; NY O
+         LDA   #124       ; ANY
+         JSR   T4A 
+         JSR   T8E        ; O
          LDA   #112       ; THER
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #124       ; GUY
-         JSR   ETONETWO 
-         JSR   EMITTONE
+         JSR   T2A
 *
          LDA   #$FF
          JSR   WAIT
 *
          LDA   #138       ; AND
-         JSR   ETONETWO
-         JSR   EMITTONE
-         JSR   EMITTONE
+         JSR   T2A
+         JSR   T8E
          LDA   #124       ; I
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #112       ; IF
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #138       ; YOU
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #124       ; ASK ME HOW
-         JSR   ETONETWO
+         JSR   T4A
+         JSR   T8E
          LDA   #112       ; I'M
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #124       ; FEE
-         JSR   EMITTONA
-         JSR   EMITTONE
+         JSR   T4A
          LDA   #188       ; LING
-         JSR   EMITTONA
-         JSR   EMITTONE
+         JSR   T4A
 *
          LDA   #$FF
          JSR   WAIT
 *
          JSR   WERENO     ; GOTTA MAKE
          LDA   #168       ; YOU
-         JSR   EMITTONA
-         JSR   EMITTONE
+         JSR   T4A
          LDA   #124       ; UN
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #112       ; DER
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #124       ; STAND
-         JSR   EMITTONA
+         JSR   T8A
 *
          LDA   #$FF
          JSR   WAIT
 *
+         JSR   NGGYU      ; NEVER GONNA GIVE YOU UP
+*
+         JSR   NEVERG     ; NEVER GONNA
+         LDA   #124       ; LET
+         JSR T8A
+         JSR T16E
+         JSR T8A          ; YOU
+         JSR T16E
+         LDA   #138       ; DOWN
+         JSR T4A          ; 
+         JSR T8E
+*
+         JSR   NEVERG     ; NEVER GONNA
+         LDA   #138       ; RUN
+         JSR T4A
+         LDA   #124       ; A
+         JSR T8A
+         LDA   #148       ; ROUND
+         JSR T8A
+         JSR T16E
+         LDA   #168       ; AND
+         JSR T16A
+         LDA   #188       ; DE
+         JSR T8A
+         JSR T8E
+         LDA   #124       ; SERT
+         JSR T4A
+         LDA   #138       ; YOU
+         JSR T2A
 *
          RTS
 * DONE MAINLINE
 *
+NGGYU    JSR   NEVERG     ; NEVER GONNA
+         LDA   #112       ; GIVE
+         JSR T8A
+         JSR T16E
+         JSR T8A          ; YOU
+         JSR T16E
+         LDA   #124       ; UP
+         JSR T4A          ; 
+         JSR T8E
+         RTS
+*
+NEVERG   LDA #188         ; NE
+         JSR T16A
+         LDA #168         ; VER
+         JSR T16A
+         LDA #138         ; GON
+         JSR T16A
+         LDA #168         ; NA
+         JSR T16A
+         RTS
+
+*
 * AFULLC
 AFULLC   LDA   #168       ; A
-         JSR   EMITTONA
+         JSR   T8A
          JSR   WERENO     ; FULL COMMIT
          LDA   #168       ; MENT'S
-         JSR   EMITTONA
+         JSR   T8A
          RTS
 *
 * WERENO
 WERENO   LDA   #168       ; WE'RE
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #148       ; NO
-         JSR   EMITTONA
+         JSR   T8A
          LDA   #138       STRANG
-         JSR   EMITTONA
+         JSR   T8A
          RTS
 *
-ETONETWO JSR   EMITTONA
-         JSR   EMITTONE
-         JSR   EMITTONE
-         RTS
-*
-* EMITTONA INPUTS A
-* EMITTONE HAS NO INPUTS
-* SCRAMBLES A X Y
-EMITTONA STA   $06
-EMITTONE LDX   $07        ; DURATION IN 07
+* T16A INPUTS A
+* T16E HAS NO INPUTS
+* EMITS A SIXTEENTH NOTE. SCRAMBLES A X Y
+T16A     STA   $06
+T16E     LDX   $07        ; DURATION IN 07
 DUR      LDY   $06        ; PITCH IN 06
          LDA   CHIRP
 PITCH    DEY
          BNE   PITCH
          DEX
          BNE   DUR
-         LDX   $07
-DUR2     LDY   $06
-         LDA   CHIRP
-PITCH2   DEY
-         BNE   PITCH2
-         DEX
-         BNE   DUR2
-*
          RTS
 *
+* T8A INPUTS A. EMITS AN EIGTH NOTE.
+ T8A     JSR   T16A
+         JSR   T16E
+         RTS
+*
+* T4A INPUTS A. EMITS A QUARTER NOTE.
+ T4A     JSR   T16A
+         JSR   T16E
+ T8E     JSR   T16E
+         JSR   T16E
+         RTS
+*
+* T2A INPUTS A. EMITS A HALF NOTE.
+* T4E TAKES NO PARAMETERS.
+ T2A     JSR   T16A
+         JSR   T16E
+         JSR   T16E
+         JSR   T16E
+ T4E     JSR   T16E
+         JSR   T16E
+         JSR   T16E
+         JSR   T16E
+         RTS
