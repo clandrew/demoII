@@ -1,0 +1,35 @@
+********************************
+*           LORES              *
+********************************
+* OBJ $6000
+         ORG   $6000
+*
+TXTCLR   EQU   $C050
+TXTSET   EQU   $C051
+MIXCLR   EQU   $C052
+LORES    EQU   $C056
+CLRGR    EQU   $F832
+KYBD     EQU   $C000
+TBUFCLR  EQU   $FC58
+*
+         LDA   #$00
+         STA   TXTCLR
+         STA   MIXCLR
+         STA   LORES
+         JSR   CLRGR
+         LDA   #$0F       ; WHITE
+         STA   $400
+         LDA   #$0B       ; PANK
+         STA   $401
+         LDA   #$FF       ; WHITE
+         STA   $402
+         LDA   #$BB       ; PANK
+         STA   $403
+LOOP     NOP
+         LDA   KYBD
+         CMP   #$80
+         BCC   LOOP
+         LDA   #$00
+         STA   TXTSET
+         JSR   TBUFCLR
+         RTS
