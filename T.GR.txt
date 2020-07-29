@@ -11,6 +11,7 @@ LORES EQU $C056
 CLRGR EQU $F832
 KYBD EQU $C000
 TBUFCLR EQU $FC58
+CHIRP EQU $C030
 WAIT EQU $FCA8
 *
  LDA #$00
@@ -20,15 +21,33 @@ WAIT EQU $FCA8
 *
  JSR CLRGR
 ********************************
+ LDA #$00
+ STA $1D
+*
 ANIM NOP
- JSR AS0
- JSR AS1
- JSR AS0
- JSR AS2
- JSR AS1
- JSR AS0
- JSR AS1
- JSR AS3
+ JSR AFRM
+ JSR WERENO ; WE'RE NO STRANG
+*
+ JSR AFRM
+ JSR T8E ; ERS
+ LDA #124 ; TO
+ JSR T8A
+*
+ JSR AFRM
+ LDA #148 ; LOO
+ JSR T4A
+ LDA #168 ; O
+ JSR T8A
+*
+ JSR AFRM
+ LDA #188 ; VE
+ JSR T2A
+ JSR T4E
+*
+ JSR AFRM
+ JSR AFRM
+ JSR AFRM
+ JSR AFRM
  JMP ANIM
 ********************************
 *
@@ -42,32 +61,77 @@ LOOP NOP
  RTS
 *
 ********************************
+AFRM NOP
+ LDA $1D
+ CMP #$00
+ BNE FR0CHK
+ LDA #<ASTLE0
+ STA $E6
+ LDA #>ASTLE0
+ STA $E7
+ JMP AFRM2
+*
+FR0CHK NOP
+ CMP #$01
+ BNE FR1CHK
+ LDA #<ASTLE1
+ STA $E6
+ LDA #>ASTLE1
+ STA $E7
+ JMP AFRM2
+*
+FR1CHK NOP
+ CMP #$02
+ BNE FR2CHK
+ LDA #<ASTLE2
+ STA $E6
+ LDA #>ASTLE2
+ STA $E7
+ JMP AFRM2
+*
+FR2CHK NOP
+ LDA #<ASTLE3
+ STA $E6
+ LDA #>ASTLE3
+ STA $E7
+*
+AFRM2 NOP
+ INC $1D
+ LDA $1D
+ CMP #$04
+ BNE AFRM3
+ LDA #$00
+ STA $1D
+*
+AFRM3
+ RTS
+********************************
 AS0 LDA #<ASTLE0
  STA $E6
  LDA #>ASTLE0
  STA $E7
- JSR DRPAUS
+ JSR FILLIMG
  RTS
 ********************************
 AS1 LDA #<ASTLE1
  STA $E6
  LDA #>ASTLE1
  STA $E7
- JSR DRPAUS
+ JSR FILLIMG
  RTS
 ********************************
 AS2 LDA #<ASTLE2
  STA $E6
  LDA #>ASTLE2
  STA $E7
- JSR DRPAUS
+ JSR FILLIMG
  RTS
 ********************************
 AS3 LDA #<ASTLE3
  STA $E6
  LDA #>ASTLE3
  STA $E7
- JSR DRPAUS
+ JSR FILLIMG
  RTS
 ********************************
 DRPAUS JSR FILLIMG
@@ -113,6 +177,112 @@ NOCARRY NOP
  INY
  CPY #$30
  BNE ROWPAIR
+ RTS
+*
+********************************
+*
+NGTAL JSR NEVERG ; NEVER GONNA
+ LDA #138 ; TELL
+ JSR T4A
+ LDA #124 ; A
+ JSR T8A
+ LDA #148 ; LIE
+ JSR T8A
+ JSR T16E
+ LDA #168 ; E
+ JSR T16A
+ LDA #188 ; E
+ JSR T4A
+ RTS
+*
+********************************
+*
+NGGYU JSR NEVERG ; NEVER GONNA
+ LDA #112 ; GIVE
+ JSR T8A
+ JSR T16E
+ JSR T8E ; YOU
+ JSR T16E
+ LDA #124 ; UP
+ JSR T4A ; 
+ JSR T8E
+ RTS
+*
+********************************
+*
+NEVERG LDA #188 ; NE
+ JSR T16A
+ LDA #168 ; VER
+ JSR T16A
+ LDA #138 ; GON
+ JSR T16A
+ LDA #168 ; NA
+ JSR T16A
+ RTS
+*
+********************************
+*
+* AFULLC
+AFULLC LDA #168 ; A
+ JSR T8A
+ JSR WERENO ; FULL COMMIT
+ LDA #168 ; MENT'S
+ JSR T8A
+ RTS
+*
+********************************
+* WERENO
+WERENO LDA #168 ; WE'RE
+ JSR T8A
+ LDA #148 ; NO
+ JSR T8A
+ LDA #138 STRANG
+ JSR T8A
+ RTS
+*
+********************************
+*
+* T16A INPUTS A
+* T16E HAS NO INPUTS
+* EMITS A SIXTEENTH NOTE. SCRAMBLES A X Y
+T16A STA $06
+T16E LDX $07 ; DURATION IN 07
+DUR LDY $06 ; PITCH IN 06
+ LDA CHIRP
+PITCH DEY
+ BNE PITCH
+ DEX
+ BNE DUR
+ RTS
+*
+********************************
+*
+* T8A INPUTS A. EMITS AN EIGTH NOTE.
+T8A JSR T16A
+ JSR T16E
+ RTS
+*
+********************************
+*
+* T4A INPUTS A. EMITS A QUARTER NOTE.
+T4A JSR T16A
+ JSR T16E
+T8E JSR T16E
+ JSR T16E
+ RTS
+*
+********************************
+*
+* T2A INPUTS A. EMITS A HALF NOTE.
+* T4E TAKES NO PARAMETERS.
+T2A JSR T16A
+ JSR T16E
+ JSR T16E
+ JSR T16E
+T4E JSR T16E
+ JSR T16E
+ JSR T16E
+ JSR T16E
  RTS
 *
 ********************************
