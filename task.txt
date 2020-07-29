@@ -23,3 +23,16 @@ With note scalings:
 124	Length: 22	DUR=160
 112     Length: 20	DUR=177
 94	Length: 16	DUR=211
+
+Note length: 24
+rest length: 39
+
+Effective rest: 256*2=512
+Estimated needed rest: 315 or 156*2
+
+156*2 is still too much.
+148*2 is still just a bit too long.
+140*2 is just the tiiniest bit too long.
+136*2 is good.
+
+now use TN188, TN138, R8, etc.
