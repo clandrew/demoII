@@ -134,11 +134,11 @@ int main()
 	assert(result.size() % lineLength == 0);
 	for (int i = 0; i < result.size(); i += lineLength)
 	{
-		std::cout << "HEX ";
+		std::cout << " HEX ";
 
 		for (int j = 0; j < lineLength; ++j)
 		{
-			std::cout << std::setfill('0') << std::uppercase << std::setw(2) << std::right << std::hex << (int)(result[i + j]) << " ";
+			std::cout << std::setfill('0') << std::uppercase << std::setw(2) << std::right << std::hex << (int)(result[i + j]) << "";
 		}
 		std::cout << "\n";
 	}
