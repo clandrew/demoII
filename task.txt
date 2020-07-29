@@ -13,3 +13,11 @@ Source array starts at 604C, but eventually we need to look up 604C + 0x28 bytes
 0xff131005
 
 0 1 0 2 1 0 1 3
+
+188	Length: 34
+168	Length: 30	
+148	Length: 25
+138	Length: 23
+124	Length: 22
+112     Length: 20
+94	Length: 16
