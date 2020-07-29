@@ -31,6 +31,22 @@ LOOP     JSR   TN168
 *
          RTS
 *
+* SOUND CODE MIGHT SEEM JANKY BUT IS VERY SENSITIVE TO TIMINGS.
+* I HAVE IT THIS WAY BECAUSE REFACTOR CAN CAUSE WRONG SOUND
+TN188    NOP
+         LDA   #112
+         STA   $06
+         LDA   #$90
+         STA   $07
+         LDX   $07
+DUR188   LDY   $06
+         LDA   CHIRP
+PCH188   DEY
+         BNE   PCH188
+         DEX
+         BNE   DUR188
+         RTS
+*
 TN168    NOP
          LDA   #112
          STA   $06
