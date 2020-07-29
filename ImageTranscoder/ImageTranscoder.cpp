@@ -15,7 +15,7 @@ void VerifyHR(HRESULT hr)
 
 int main()
 {
-    std::wstring filename = L"test.png";
+    std::wstring filename = L"astley0.png";
 	ComPtr<IWICImagingFactory> m_wicImagingFactory;
 
 	VerifyHR(CoInitialize(nullptr));
