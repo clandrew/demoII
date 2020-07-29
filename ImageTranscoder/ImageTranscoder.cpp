@@ -13,9 +13,14 @@ void VerifyHR(HRESULT hr)
 	}
 }
 
-int main()
+int main(int argc, void** argv)
 {
-    std::wstring filename = L"astley0.png";
+	if (argc != 2)
+		return -1;
+
+	std::string filenameCmdLine = (char*)argv[1];
+	std::wstring filename(filenameCmdLine.begin(), filenameCmdLine.end());
+
 	ComPtr<IWICImagingFactory> m_wicImagingFactory;
 
 	VerifyHR(CoInitialize(nullptr));
