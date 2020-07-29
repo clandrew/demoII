@@ -1,2 +1,4 @@
 ImageTranscoder/.vs/*
 ImageTranscoder/Debug/*
+
+/ImageTranscoder/x64/*

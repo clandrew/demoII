@@ -118,7 +118,7 @@ int main()
 			int rowPairIndex = y / 2;
 			int resultIndex = (rowPairIndex * 40) + x;
 
-			if (x % 2 == 0)
+			if (y % 2 == 0)
 			{
 				result[resultIndex] |= lowresColor->EvenMask;
 			}
@@ -131,6 +131,7 @@ int main()
 
 	// Output the result as hex directives. Hex pseudo-op is limited to 64 characters, or 32 bytes; need to pick lineLength <= 32
 	int lineLength = 16;
+	assert(result.size() % lineLength == 0);
 	for (int i = 0; i < result.size(); i += lineLength)
 	{
 		std::cout << "HEX ";
