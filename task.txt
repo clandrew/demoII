@@ -35,12 +35,12 @@ Estimated needed rest: 315 or 156*2
 140*2 is just the tiiniest bit too long.
 136*2 is good.
 
-now use TN188, TN138, R8, etc.
+ASCII CODES
 
+left arrow: 0x88 (0x8)
+right arrow: 0x95
 
-350
-459
-465..
-458
-499
-502
+'A': 0xC1=1100 0001, or 0x41 0100 0001
+
+up arrow: 0x8B
+down arrow: 0x8A

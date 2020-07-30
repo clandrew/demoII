@@ -53,25 +53,28 @@ int main(int argc, void** argv)
 		0.f,
 		WICBitmapPaletteTypeMedianCut));
 
-	UINT width, height;
-	VerifyHR(spConverter->GetSize(&width, &height));
+	UINT srcImageWidth, srcImageHeight;
+	VerifyHR(spConverter->GetSize(&srcImageWidth, &srcImageHeight));
 
-	assert(width == 40 && height == 48);
+	assert(srcImageWidth == 40);
 
-	std::vector<UINT> buffer;
+	std::vector<UINT> rgbBuffer;
 
-	buffer.resize(width * height);
+	rgbBuffer.resize(srcImageWidth * srcImageHeight);
 	VerifyHR(spConverter->CopyPixels(
 		NULL,
-		width * sizeof(UINT),
-		static_cast<UINT>(buffer.size()) * sizeof(UINT),
-		reinterpret_cast<BYTE*>(buffer.data())));
+		srcImageWidth * sizeof(UINT),
+		static_cast<UINT>(rgbBuffer.size()) * sizeof(UINT),
+		reinterpret_cast<BYTE*>(rgbBuffer.data())));
 
 	std::vector<byte> result;
-	result.resize(960);
+
+	int trancodedDataSize = (srcImageWidth * srcImageHeight) / 2;
+
+	result.resize(trancodedDataSize);
 
 	// Zero out
-	for (int i = 0; i < 128; ++i)
+	for (size_t i = 0; i < result.size(); ++i)
 	{
 		result[i] = 0;
 	}
@@ -102,11 +105,11 @@ int main(int argc, void** argv)
 	};
 
 	// Top row
-	for (int y = 0; y < 48; ++y)
+	for (int y = 0; y < srcImageHeight; ++y)
 	{
-		for (int x = 0; x < 40; ++x)
+		for (int x = 0; x < srcImageWidth; ++x)
 		{
-			UINT srcRgb = buffer[(y * 40) + x];
+			UINT srcRgb = rgbBuffer[(y * srcImageWidth) + x];
 
 			LowresColor const* lowresColor = nullptr;
 			for (int i = 0; i < 16; ++i)
@@ -121,7 +124,7 @@ int main(int argc, void** argv)
 			assert(lowresColor);
 
 			int rowPairIndex = y / 2;
-			int resultIndex = (rowPairIndex * 40) + x;
+			int resultIndex = (rowPairIndex * srcImageWidth) + x;
 
 			if (y % 2 == 0)
 			{
