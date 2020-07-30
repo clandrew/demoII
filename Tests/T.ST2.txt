@@ -1,0 +1,77 @@
+********************************
+*       SOUND TEST 2           *
+********************************
+* OBJ $6000
+         ORG   $6000
+*
+CHIRP    EQU   $C030
+WAIT     EQU   $FCA8
+KYBD     EQU   $C000
+*
+LOOP     JSR   TN168
+         JSR   TN168
+         JSR   TN168
+         JSR   TN168
+         JSR   TN168
+         JSR   TN168
+         JSR   TN168
+         JSR   TN168
+         JSR   TN148
+         JSR   TN148
+         JSR   TN148
+         JSR   TN148
+         JSR   TN148
+         JSR   TN148
+         JSR   TN148
+         JSR   TN148
+*
+         LDA   KYBD
+         CMP   #$80
+         BCC   LOOP
+*
+         RTS
+*
+* SOUND CODE MIGHT SEEM JANKY BUT IS VERY SENSITIVE TO TIMINGS.
+* I HAVE IT THIS WAY BECAUSE REFACTOR CAN CAUSE WRONG SOUND
+TN188    NOP
+         LDA   #112
+         STA   $06
+         LDA   #$90
+         STA   $07
+         LDX   $07
+DUR188   LDY   $06
+         LDA   CHIRP
+PCH188   DEY
+         BNE   PCH188
+         DEX
+         BNE   DUR188
+         RTS
+*
+TN168    NOP
+         LDA   #112
+         STA   $06
+         LDA   #$90
+         STA   $07
+         LDX   $07
+DUR168   LDY   $06
+         LDA   CHIRP
+PCH168   DEY
+         BNE   PCH168
+         DEX
+         BNE   DUR168
+         RTS
+*
+TN148    NOP
+         LDA   #94
+         STA   $06
+         LDA   #$90
+         STA   $07
+         LDX   $07
+DUR148   LDY   $06
+         LDA   CHIRP
+PCH148   DEY
+         BNE   PCH148
+         DEX
+         BNE   DUR148
+         RTS
+*
