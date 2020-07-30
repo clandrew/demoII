@@ -1,2 +1,2 @@
-# gfx2
+# graphics][
 A demo for Apple ][
