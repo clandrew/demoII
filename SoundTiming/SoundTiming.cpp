@@ -9,15 +9,17 @@
 int main()
 {
     /*
-    TONE						            CLOCK
-    A6 07		    TONE	LDX $07			3
-    A4 06		    DUR	LDY $06			    3
-    AD 30 C0		LDA CHIRP		        4
-    88		        PCH	DEY			        2
-    D0 FD			BNE PCH			        Branch taken: 3. Not taken: 2
-    CA			    DEX			            2
-    D0 F5			BNE DUR			        Branch taken: 3. Not taken: 2
-    60  	        RTS			            6
+    The sound code looks like
+
+    TONE                                    CLOCK
+    A6 07          TONE   LDX $07           3
+    A4 06          DUR    LDY $06           3
+    AD 30 C0              LDA CHIRP         4
+    88             PCH    DEY               2
+    D0 FD                 BNE PCH           Branch taken: 3. Not taken: 2
+    CA                    DEX               2
+    D0 F5                 BNE DUR           Branch taken: 3. Not taken: 2
+    60                    RTS               6
 
     Example of "Tone" usage. All the callers of TONE have the same overhead so not worth worrying about too much.
 
@@ -30,8 +32,6 @@ int main()
 
     */
 
-    // The idea here is to standardize all the note lengths around note 138 which I initially had set to duration 144 arbitrarily. 
-    // I chose 138 because it falls in the middle of the range of notes needed.
 
     /*
     Working through the above we can determine that the number of clock cycles can be expressed as
@@ -50,7 +50,7 @@ int main()
 
     clk = dur * (11 + 5 * pch) - 1;
 
-    To solve for dur, we have
+    Rearranged to solve for dur, we have
 
     clk + 1 = dur * (11 + 5 * pch)
 
@@ -58,6 +58,8 @@ int main()
 
     */
 
+    // The idea here is to standardize all the note lengths around note 138 which I initially had set to duration 144 arbitrarily. 
+    // I picked 138 because it falls in the middle of the range of notes needed.
     int standardPitch = 138;
     int standardDuration = 144;
     int clk = standardDuration * (11 + 5 * standardPitch) - 1;
