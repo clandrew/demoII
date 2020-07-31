@@ -107,7 +107,10 @@ int FindRecommendedNoteDuration(int pitch, int targetCycleCount)
 
 int main()
 {
-    int targetCycleCount = 100814;
+    int standardPitch = 138;
+    int standardPitchDuration = 144;
+
+    int targetCycleCount = MeasureClockCycles(standardPitch, standardPitchDuration);
 
     int pitches[] = { 188, 168, 148, 124, 112, 94 };
 
