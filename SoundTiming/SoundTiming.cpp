@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
+#include <assert.h>
 
 int MeasureClockCycles(int pitch, int duration)
 {
@@ -33,52 +34,20 @@ int MeasureClockCycles(int pitch, int duration)
     // I chose 138 because it falls in the middle of the range of notes needed.
 
     int cycleCount = 0;
-    int y = 0;
-    int x = 0;
 
-    // TONE	LDX $07
-    x = duration;
+    int dur = duration;
+    int pch = pitch;
+    int est = 0;
+    est += dur * 3;
+    est += dur * 4;
+    est += pch * dur * 2;
+    est += (pch * dur * 3) - (dur * 3);
+    est += dur * 2;
+    est += dur * 2;
+    est += (dur * 3) - 3;
+    est += 2;
 
-DUR:
-    // LDX $06
-    y = pitch;
-    cycleCount += 3;
-
-    // LDA CHIRP
-    cycleCount += 4;
-
-PCH:
-    // DEY
-    y--;
-    cycleCount += 2;
-
-    // BNE PCH
-    if (y > 0)
-    {
-        cycleCount += 3;
-        goto PCH;
-    }
-    else
-    {
-        cycleCount += 2;
-    }
-
-    //DEX
-    x--;
-    cycleCount += 2;
-
-    // BNE DUR
-    if (x > 0)
-    {
-        cycleCount += 3;
-        goto DUR;
-    }
-    else
-    {
-        cycleCount += 2;
-    }
-
-    return cycleCount;
+    return est;
 
 }
 
@@ -90,7 +59,7 @@ int FindRecommendedNoteDuration(int pitch, int targetCycleCount)
     int smallestDelta = 100000;
     int bestDuration = 0;
 
-    for (int i = 0; i < 255; ++i)
+    for (int i = 1; i < 255; ++i)
     {
         int cycleCount = MeasureClockCycles(pitch, i);
 
@@ -107,13 +76,13 @@ int FindRecommendedNoteDuration(int pitch, int targetCycleCount)
 
 int main()
 {
-    int standardPitch = 138;
-    int standardPitchDuration = 144;
+    int pch = 138;
+    int dur = 144;
 
-    int targetCycleCount = MeasureClockCycles(standardPitch, standardPitchDuration);
+    int targetCycleCount = MeasureClockCycles(pch, dur);
 
     int pitches[] = { 188, 168, 148, 124, 112, 94 };
-
+        
     for (int i = 0; i < _countof(pitches); ++i)
     {
         int duration = FindRecommendedNoteDuration(pitches[i], targetCycleCount);
