@@ -5,9 +5,9 @@
 #include <iostream>
 #include <assert.h>
 
-int MeasureClockCycles(int pitch, int duration)
-{
 
+int main()
+{
     /*
     TONE						            CLOCK
     A6 07		    TONE	LDX $07			3
@@ -33,59 +33,41 @@ int MeasureClockCycles(int pitch, int duration)
     // The idea here is to standardize all the note lengths around note 138 which I initially had set to duration 144 arbitrarily. 
     // I chose 138 because it falls in the middle of the range of notes needed.
 
-    int cycleCount = 0;
+    /*
+    Working through the above we can determine that the number of clock cycles can be expressed as
 
-    int dur = duration;
-    int pch = pitch;
-    int est = 0;
-    est += dur * 3;
-    est += dur * 4;
-    est += pch * dur * 2;
-    est += (pch * dur * 3) - (dur * 3);
-    est += dur * 2;
-    est += dur * 2;
-    est += (dur * 3) - 3;
-    est += 2;
+    clk = 0
+    clk += dur * 3;
+    clk += dur * 4;
+    clk += pch * dur * 2;
+    clk += (pch * dur * 3) - (dur * 3);
+    clk += dur * 2;
+    clk += dur * 2;
+    clk += (dur * 3) - 3;
+    clk += 2;
 
-    return est;
+    which simplifies down to
 
-}
+    clk = dur * (11 + 5 * pch) - 1;
 
-int FindRecommendedNoteDuration(int pitch, int targetCycleCount)
-{
-    // Target cycle count, calibrated around PITCH=138, DURATION=144, is: 100814
+    To solve for dur, we have
 
-    // Brute force for DURATION of the other notes to get the same cycle count.
-    int smallestDelta = 100000;
-    int bestDuration = 0;
+    clk + 1 = dur * (11 + 5 * pch)
 
-    for (int i = 1; i < 255; ++i)
-    {
-        int cycleCount = MeasureClockCycles(pitch, i);
+    dur = (clk + 1) / (11 + 5 * pch)
 
-        int delta = abs(cycleCount - targetCycleCount);
+    */
 
-        if (delta < smallestDelta)
-        {
-            smallestDelta = delta;
-            bestDuration = i;
-        }
-    }
-    return bestDuration;
-}
-
-int main()
-{
-    int pch = 138;
-    int dur = 144;
-
-    int targetCycleCount = MeasureClockCycles(pch, dur);
+    int standardPitch = 138;
+    int standardDuration = 144;
+    int clk = standardDuration * (11 + 5 * standardPitch) - 1;
 
     int pitches[] = { 188, 168, 148, 124, 112, 94 };
         
     for (int i = 0; i < _countof(pitches); ++i)
     {
-        int duration = FindRecommendedNoteDuration(pitches[i], targetCycleCount);
+        float durationF = float(clk + 1) / float(11 + 5 * pitches[i]);
+        int duration = round(durationF);
         std::cout << " Duration for " << pitches[i] << ": " << duration << "\n";
     }
 }
