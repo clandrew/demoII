@@ -23,5 +23,5 @@ For example, from the main screen, you
 
 See the video of it in action: [Link](https://www.youtube.com/watch?v=lmg9sN9FO-w)
 
-This was borne out of a personal desire to learn more about programming 6502-on-Apple II. Ages ago I wrote Logo and Basic code for that platform but never in 6502 directly. This was made in a few days and tested using an emulator. I gave my disk image to a friend to run on real hardware. I expected this would shake out some inconsistencies between running on hardware and running on emulator, but it worked as expected the first time.
+This was borne out of a personal desire to learn more about programming 6502-on-Apple II. Ages ago I wrote Logo and Basic code for that platform but never in 6502 directly. This was made in a few days and tested using an emulator. I gave my disk image to a friend to run on real hardware. I expected this would shake out some inconsistencies between running on hardware and running on emulator, but there weren't any.
 
