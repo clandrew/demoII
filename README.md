@@ -3,6 +3,9 @@
 ## What is it?
 It is definitely a computer program. A program that runs on the computer. Specifically an Apple II computer. A bunch of ones and zeroes. You could think of it as a port of Crysis for the Apple II computer family.
 
+## Release
+Find here a binary file which can be copied to a compatible Apple II disk. The file suffix "#066000" is meant to indicate that it the Aux type file attribute should be kept as 0x066000 when copied to e.g., a ProDOS compatible environment with Ciderpress. Ciderpress understands these suffixes.
+
 ## Build
 This is assembled using Merlin Pro assembler version 2.43. The source is all in one file, T.GR.asm.
 For example, from the main screen, you
