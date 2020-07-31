@@ -38,7 +38,6 @@ int MeasureClockCycles(int pitch, int duration)
 
     // TONE	LDX $07
     x = duration;
-    cycleCount += 3;
 
 DUR:
     // LDX $06
@@ -78,9 +77,6 @@ PCH:
     {
         cycleCount += 2;
     }
-
-    // RTS 
-    cycleCount += 6;
 
     return cycleCount;
 
