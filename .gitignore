@@ -2,4 +2,6 @@ ImageTranscoder/.vs/*
 ImageTranscoder/Debug/*
 
 /ImageTranscoder/x64/*
+/SoundTiming/.vs/*
+/SoundTiming/Debug/*
 GR#066000

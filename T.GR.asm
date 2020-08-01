@@ -1,5 +1,5 @@
 ********************************
-* GRAPHICS2 BY CLAIRE ANDREWS *
+* DEMOII BY CA *
 ********************************
 * OBJ $6000
  ORG $6000
@@ -681,7 +681,7 @@ TN112 LDA #112
 *
 TN94 LDA #94
  STA $06
- LDA #211
+ LDA #210
  STA $07
  JSR TONE
  RTS
