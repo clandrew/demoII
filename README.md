@@ -25,3 +25,4 @@ See the video of it in action: [Link](https://www.youtube.com/watch?v=lmg9sN9FO-
 
 This was borne out of a personal desire to learn more about programming 6502-on-Apple II. Ages ago I wrote Logo and Basic code for that platform but never in 6502 directly. This was made in a few days and tested using an emulator. I gave my disk image to a friend to run on real hardware. I expected this would shake out some inconsistencies between running on hardware and running on emulator, but there weren't any.
 
+More info about what it was like working on this is in [this blog post](http://cml-a.com/content/2020/07/31/crysis-apple-port/).
