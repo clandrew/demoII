@@ -1,7 +1,7 @@
 # Demo][
 
 ## What is it?
-It is definitely a computer program. A program that runs on the computer. Specifically an Apple II computer. A bunch of ones and zeroes. You could think of it as a port of Crysis for the Apple II computer family.
+You could think of it as a port of Crysis for the Apple II computer family
 
 ## Release
 Find [here](https://github.com/clandrew/demoII/releases) a binary file which can be copied to a compatible Apple II disk. 
